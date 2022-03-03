@@ -1,0 +1,48 @@
+.meal-item {
+    margin-bottom: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.meal-item-img {
+    width: 64px;
+    height: 64px;
+    border-radius: 10px;
+    flex-basis: 70px;
+}
+
+.meal-item-description {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-grow: 2;
+}
+
+.meal-item-title {
+    margin-top: 0;
+    margin-bottom: .5rem;
+}
+
+.meal-item-price {
+    background: #f94904;
+    color: white;
+    border-radius: 80px;
+    padding: 1px 7px;
+    margin-left: 5px;
+}
+
+.meal-item-ingredients {
+    font-size: .9rem;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .meal-item {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+}

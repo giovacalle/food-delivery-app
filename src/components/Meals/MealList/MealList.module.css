@@ -1,0 +1,16 @@
+.meal-list-container {
+    position: relative;
+    bottom: 9rem;
+    left: 10%;
+    right: 10%;
+    width: 80%;
+}
+
+.meal-list {
+    padding: 0;
+    list-style: none;
+}
+
+.meal-list li:last-child {
+    margin: 0 !important;
+}

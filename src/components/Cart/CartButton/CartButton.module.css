@@ -1,0 +1,32 @@
+.button {
+    width: 64px;
+    height: 64px;
+    background: none;
+    border: 1px solid #ffff;
+    border-radius: 100%;
+    padding: 10px 0;
+    position: relative;
+}
+
+.button svg {
+    width: 48px;
+    height: 48px;
+}
+
+.button .badge-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: calc(100% - 10px);
+    width: 100%;
+    text-align: left;
+}
+
+.button .badge {
+    width: auto;
+    height: auto;
+    border-radius: 15px;
+    background-color: #f94904;
+    color: #ffff;
+    padding: 2px 4px;
+}
