@@ -6,7 +6,7 @@ import classes from './CartButton.module.css';
 
 const CartButton = (props) => {
   return (
-    <Button className={classes['button']}>
+    <Button className={classes['button']} onClick={props.onClick}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 20 20"
