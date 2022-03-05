@@ -28,6 +28,9 @@
     height: 35px;
     border-radius: 10px;
     text-align: center;
+    font-size: 120%;
+    font-weight: bold;
+    padding-left: 15px;
 }
 
 .meal-item-input:hover {

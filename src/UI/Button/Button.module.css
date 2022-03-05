@@ -20,6 +20,11 @@
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.26);
 }
 
+.button:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+}
+
 @media (min-width: 768px) {
   .button {
     width: auto;

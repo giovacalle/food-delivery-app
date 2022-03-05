@@ -23,10 +23,14 @@
 }
 
 .button .badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     width: auto;
-    height: auto;
+    min-width: 20px;
+    height: 20px;
+    padding: 3px;
     border-radius: 15px;
     background-color: #f94904;
     color: #ffff;
-    padding: 2px 4px;
 }

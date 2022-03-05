@@ -1,13 +1,35 @@
-import React from "react";
-
-import Button from "../../../UI/Button/Button";
+import React, { useContext } from "react";
 
 import classes from "./MealItem.module.css";
 
 import mealsImage from "../../../assets/pizza.jpg";
 import MealForm from "../MealForm/MealForm";
 
+import CartContext from '../../../context/CartContext';
+
 const MealItem = (props) => {
+  const cartCtx = useContext(CartContext);
+
+  const addToCartHandler = (qnt) => {
+    cartCtx.addProduct({
+      id: props.id,
+      title: props.title,
+      ingredients: props.ingredients,
+      price: props.price,
+      quantity: qnt
+    });
+  };
+
+  const removeFromCartHandler = (qnt) => {
+    cartCtx.removeProduct({
+      id: props.id,
+      title: props.title,
+      ingredients: props.ingredients,
+      price: props.price,
+      quantity: qnt
+    });
+  };
+
   return (
     <li className={classes["meal-item"]}>
       <div className={classes["meal-item-description"]}>
@@ -28,7 +50,7 @@ const MealItem = (props) => {
           </p>
         </section>
       </div>
-      <MealForm />
+      <MealForm onAddCart={addToCartHandler} onRemoveCart={removeFromCartHandler} cartQnt={props.quantity} />
     </li>
   );
 };
