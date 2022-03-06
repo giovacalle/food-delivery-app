@@ -6,7 +6,7 @@ import classes from "./Header.module.css";
 const Header = (props) => {
   return (
     <header className={classes["header"]}>
-      <h2>MenuWithReact</h2>
+      <h2>FoodDeliveryApp</h2>
       <CartButton onClick={props.onClick} />
     </header>
   );
