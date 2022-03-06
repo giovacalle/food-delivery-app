@@ -20,7 +20,7 @@ const CartButton = (props) => {
       </svg>
       <div className={classes['badge-container']}>
           <span className={classes['badge']}>
-            <label>{cartCtx.products.length}</label>
+            <label>{cartCtx.getQuantityProducts()}</label>
           </span>
       </div>
     </Button>

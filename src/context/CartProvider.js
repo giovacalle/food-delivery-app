@@ -77,9 +77,17 @@ export const CartProvider = (props) => {
     return totalAmount;
   };
 
+  const reduceQuantityCart = () => {
+    const totalAmount = cartState.products.reduce((prev, curr) => {
+      return prev + curr.quantity;
+    }, 0);
+    return totalAmount;
+  };
+
   const cartContext = {
     products: cartState.products,
     getTotalOrder: reduceTotalCart,
+    getQuantityProducts : reduceQuantityCart,
     addProduct: addProductToCartHandler,
     removeProduct: removeProductFromCartHandler
   };
