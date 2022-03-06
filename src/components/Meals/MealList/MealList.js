@@ -10,25 +10,29 @@ const DUMMY_MEALS = [
     id: "m1",
     title: "Sushi",
     ingredients: "Finest fish and veggies",
-    price: 22.99
+    price: 22.99,
+    img: 'https://source.unsplash.com/64x64/?sushi'
   },
   {
     id: "m2",
     title: "Schnitzel",
     ingredients: "A german specialty!",
-    price: 16.5
+    price: 16.5,
+    img: 'https://source.unsplash.com/64x64/?schnitzel'
   },
   {
     id: "m3",
     title: "Barbecue Burger",
     ingredients: "American, raw, meaty",
-    price: 12.99
+    price: 12.99,
+    img: 'https://source.unsplash.com/64x64/?burger'
   },
   {
     id: "m4",
     title: "Green Bowl",
     ingredients: "Healthy...and green...",
-    price: 18.99
+    price: 18.99,
+    img: 'https://source.unsplash.com/64x64/?bowl'
   }
 ];
 
@@ -44,6 +48,7 @@ const MealList = (props) => {
               title={meal.title}
               ingredients={meal.ingredients}
               price={meal.price}
+              img={meal.img}
             />
           );
         })}

@@ -36,6 +36,7 @@ const CartList = (props) => {
                 ingredients={product.ingredients}
                 price={product.price}
                 quantity={product.quantity}
+                img={product.img}
               />
             );
           }): <li>Your cart is empty.</li>}

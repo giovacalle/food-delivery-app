@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 
 import classes from "./MealItem.module.css";
 
-import mealsImage from "../../../assets/pizza.jpg";
 import MealForm from "../MealForm/MealForm";
 
 import CartContext from '../../../context/CartContext';
@@ -16,16 +15,14 @@ const MealItem = (props) => {
       title: props.title,
       ingredients: props.ingredients,
       price: props.price,
-      quantity: qnt
+      quantity: qnt,
+      img: props.img
     });
   };
 
   const removeFromCartHandler = (qnt) => {
     cartCtx.removeProduct({
       id: props.id,
-      title: props.title,
-      ingredients: props.ingredients,
-      price: props.price,
       quantity: qnt
     });
   };
@@ -35,7 +32,7 @@ const MealItem = (props) => {
       <div className={classes["meal-item-description"]}>
         <img
           className={classes["meal-item-img"]}
-          src={mealsImage}
+          src={props.img}
           alt="food item of menu"
         />
         <section className={classes["meal-item-info"]}>
