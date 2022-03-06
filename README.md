@@ -6,7 +6,7 @@ Goals
 
     -from scratch without any CSS lib (main goal is learning React, so as first example I added some rude css)
 
-    -build an easy (front-end) web app to buy takeaway food 
+    -build an easy (front-end) web app to order food from basic delivery app 
 
     -use different 'new' hooks learned (in particular use of custom context)
 
