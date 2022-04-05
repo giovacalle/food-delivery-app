@@ -46,8 +46,11 @@ const cartReducer = (state, action) => {
           }
         }
       break; 
+    case "CLEAR":
+      updatedProducts = [];
+      break;
     default:
-      updatedProducts = defaultCartState;
+      updatedProducts = [];
       break;
   }
 
@@ -70,10 +73,15 @@ export const CartProvider = (props) => {
     dispatchCartAction({ type: "REMOVE", product: product });
   };
 
+  const cartClearHandler = () => {
+    dispatchCartAction({ type: "CLEAR" });
+  };
+
   const reduceTotalCart = () => {
     const totalAmount = cartState.products.reduce((prev, curr) => {
       return prev + curr.price * curr.quantity;
     }, 0);
+    
     return totalAmount;
   };
 
@@ -81,6 +89,7 @@ export const CartProvider = (props) => {
     const totalAmount = cartState.products.reduce((prev, curr) => {
       return prev + curr.quantity;
     }, 0);
+
     return totalAmount;
   };
 
@@ -89,7 +98,8 @@ export const CartProvider = (props) => {
     getTotalOrder: reduceTotalCart,
     getQuantityProducts : reduceQuantityCart,
     addProduct: addProductToCartHandler,
-    removeProduct: removeProductFromCartHandler
+    removeProduct: removeProductFromCartHandler,
+    clearCart: cartClearHandler
   };
 
   return (

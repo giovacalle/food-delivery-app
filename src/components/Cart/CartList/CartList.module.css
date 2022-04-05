@@ -34,6 +34,7 @@
   font-weight: bolder;
   padding: 0 .8rem .1rem;
   border-radius: 10px;
+  width: initial !important;
 }
 
 .modal-footer {
@@ -44,19 +45,31 @@
   color: #ffff;
   font-weight: bold;
 }
-.modal-header-order {
+
+.modal-footer-actions button {
+  width: initial !important;
   border-radius: 10px;
+  padding: 7px;
+}
+.modal-footer-cancel {
+  float: unset;
+  background-color: #cccccc;
+  color: black;
+  margin-right: .5rem;
 }
 
 .modal-body {
   width: 100%;
-  margin: 4rem 0;
   padding: .5rem;
+  max-height: 50vh;
+  overflow: auto;
 }
 .cart-items {
   list-style: none;
   margin: 0;
   padding: 0;
-  max-height: 20rem;
-  overflow: auto;
+  overflow: hidden;
+}
+.cart-items li.cart-item-empty {
+  margin: 4rem 0;
 }
