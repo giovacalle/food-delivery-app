@@ -1,4 +1,3 @@
-import { isFocusable } from "@testing-library/user-event/dist/utils";
 import useInput from "../../../hooks/use-input";
 
 import classes from './CartCheckout.module.css';

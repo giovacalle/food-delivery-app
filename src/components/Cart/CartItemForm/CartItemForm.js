@@ -21,7 +21,7 @@ const CartItemForm = ({ onModifyCart, cartQnt }) => {
 
   useEffect(() => {
     onModifyCart(quantity);
-  }, [quantity]);
+  }, [onModifyCart, quantity]);
 
   const addToCartHandler = (event) => {
     event.preventDefault();
