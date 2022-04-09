@@ -7,48 +7,38 @@ const defaultCartState = {
 };
 const cartReducer = (state, action) => {
   let productIndex;
-  let updatedProducts;
+  let updatedProducts = [...state.products];
 
   switch (action.type) {
     case "ADD":
-      productIndex = state.products.findIndex((item) => {
+      productIndex = updatedProducts.findIndex((item) => {
         return item.id === action.product.id;
       });
 
-      const productToAdd = state.products[productIndex];
-      updatedProducts = [...state.products];
+      const productToAdd = updatedProducts[productIndex];
 
       if (productToAdd) {
-        updatedProducts[productIndex] = {
-          ...productToAdd,
-          quantity: action.product.quantity
-        };
+        updatedProducts[productIndex].quantity += action.product.quantity;
       } else {
-        if (action.product.quantity !== 0) updatedProducts = state.products.concat(action.product);
+        if (action.product.quantity !== 0) updatedProducts = updatedProducts.concat(action.product);
       }
       break;
-    case "REMOVE":
-        productIndex = state.products.findIndex((item) => {
-            return item.id === action.product.id;
+    case "SET":
+        productIndex = updatedProducts.findIndex((item) => {
+          return item.id === action.product.id;
         });
     
-        const productToRemove = state.products[productIndex];
-        updatedProducts = [...state.products];
+        const productToSet = updatedProducts[productIndex];
 
-        if (productToRemove) {
+        if (productToSet) {
           if (action.product.quantity > 0) {
-            updatedProducts[productIndex] = {
-                ...productToRemove,
-                quantity: action.product.quantity
-            };
+            updatedProducts[productIndex].quantity = action.product.quantity;
           } else {
             updatedProducts = updatedProducts.filter(item => item.id !== action.product.id);
           }
         }
       break; 
     case "CLEAR":
-      updatedProducts = [];
-      break;
     default:
       updatedProducts = [];
       break;
@@ -67,6 +57,10 @@ export const CartProvider = (props) => {
 
   const addProductToCartHandler = (product) => {
     dispatchCartAction({ type: "ADD", product: product });
+  };
+
+  const setProductQuantityHandler = (product) => {
+    dispatchCartAction({ type: "SET", product: product });
   };
 
   const removeProductFromCartHandler = (product) => {
@@ -98,6 +92,7 @@ export const CartProvider = (props) => {
     getTotalOrder: reduceTotalCart,
     getQuantityProducts : reduceQuantityCart,
     addProduct: addProductToCartHandler,
+    setProduct: setProductQuantityHandler,
     removeProduct: removeProductFromCartHandler,
     clearCart: cartClearHandler
   };

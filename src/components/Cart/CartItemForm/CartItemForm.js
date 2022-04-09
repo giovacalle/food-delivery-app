@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Button from "../../../UI/Button/Button";
 
-import classes from "./MealForm.module.css";
+import classes from "./CartItemForm.module.css";
 
-const MealForm = ({ onAddCart, cartQnt }) => {
-  const [quantity, setQuantity] = useState(1);
+const CartItemForm = ({ onModifyCart, cartQnt }) => {
+  const [quantity, setQuantity] = useState(cartQnt);
 
   const quantityChangeHandler = (event) => {
     setQuantity(parseInt(event.target.value));
@@ -19,12 +19,12 @@ const MealForm = ({ onAddCart, cartQnt }) => {
     setQuantity((prevState) => prevState - 1);
   };
 
+  useEffect(() => {
+    onModifyCart(quantity);
+  }, [quantity]);
+
   const addToCartHandler = (event) => {
     event.preventDefault();
-
-    onAddCart(quantity);
-
-    setQuantity(1);
   };
 
   return (
@@ -37,11 +37,10 @@ const MealForm = ({ onAddCart, cartQnt }) => {
           onChange={quantityChangeHandler}
           value={quantity}
         />
-        <Button type='button' className={classes["meal-item-remove"]} onClick={removeQuantityHandler} disabled={quantity <= 1}>-</Button>
+        <Button type='button' className={classes["meal-item-remove"]} onClick={removeQuantityHandler}>-</Button>
       </div>
-      {!cartQnt && <Button type='submit'>Add to cart</Button> }
     </form>
   );
 };
 
-export default MealForm;
+export default CartItemForm;

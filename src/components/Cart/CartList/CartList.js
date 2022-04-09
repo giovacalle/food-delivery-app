@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import Button from "../../../UI/Button/Button";
 
 import Modal from "../../../UI/Modal/Modal";
-import MealItem from "../../Meals/MealItem/MealItem";
+import CartItem from "../CartlItem/CartItem";
 import CartCheckout from '../CartCheckout/CartCheckout';
 
 import CartContext from "../../../context/CartContext";
@@ -17,6 +17,10 @@ const CartList = (props) => {
 
   const confirmOrderHandler = () => {
     setConfirmOrder(true);
+  };
+
+  const setQuantityHandler = (product) => {
+    cartCtx.setProduct(product);
   };
 
   const submitOrderHandler = async (userData) => {
@@ -45,7 +49,7 @@ const CartList = (props) => {
           {cartCtx.products.length > 0 ?            
             cartCtx.products.map((product) => {
             return (
-              <MealItem
+              <CartItem
                 key={product.id}
                 id={product.id}
                 title={product.title}
@@ -53,9 +57,10 @@ const CartList = (props) => {
                 price={product.price}
                 quantity={product.quantity}
                 img={product.img}
+                onSetQuantity={setQuantityHandler}
               />
             );
-          }): <li className={classes["cart-item-empty"]}>Your cart is empty.</li>}
+          }): <li className={classes["cart-item-empty"]}>Your cart is empty :(</li>}
         </ul>
       }
     </>;

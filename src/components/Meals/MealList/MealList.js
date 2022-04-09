@@ -3,18 +3,12 @@ import React, { useState, useCallback, useEffect, useContext } from "react";
 import Card from "../../../UI/Card/Card";
 import MealItem from "../MealItem/MealItem";
 
-import CartContext from "../../../context/CartContext";
-
 import classes from "./MealList.module.css";
 
 const MealList = (props) => {
   const [meals, setMeals] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const cartCtx = useContext(CartContext);
-
-  // to do
-  // when quantity in cart change we should re-render this list with proper quantity for each product (?)
 
   const fetchMealsHandler = useCallback(async() => {
     setIsLoading(true);
@@ -31,12 +25,7 @@ const MealList = (props) => {
 
       let mealsFormatted = [];
       for (const meal in data) {
-        const mealInCart = cartCtx.products.find(mealCart => mealCart.id === data[meal].id);
-
-        if (mealInCart)
-          mealsFormatted.push({...data[meal], quantity: mealInCart.quantity});
-        else
-          mealsFormatted.push(data[meal]);
+        mealsFormatted.push(data[meal]);
       }
 
       setMeals(mealsFormatted);
@@ -66,7 +55,6 @@ const MealList = (props) => {
                 ingredients={meal.ingredients}
                 price={meal.price}
                 img={meal.img}
-                quantity={meal.quantity}
               />
             );
           })

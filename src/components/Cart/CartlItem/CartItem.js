@@ -1,16 +1,12 @@
-import React, { useContext } from "react";
+import React from "react";
 
-import classes from "./MealItem.module.css";
+import classes from "./CartItem.module.css";
 
-import MealForm from "../MealForm/MealForm";
+import CartItemForm from "../CartItemForm/CartItemForm";
 
-import CartContext from '../../../context/CartContext';
-
-const MealItem = (props) => {
-  const cartCtx = useContext(CartContext);
-
-  const addToCartHandler = (qnt) => {
-    cartCtx.addProduct({
+const CartItem = (props) => {
+  const modifyQuantityHandler = (qnt) => {
+    props.onSetQuantity({
       id: props.id,
       title: props.title,
       ingredients: props.ingredients,
@@ -40,9 +36,9 @@ const MealItem = (props) => {
           </p>
         </section>
       </div>
-      <MealForm onAddCart={addToCartHandler} cartQnt={props.quantity} />
+      <CartItemForm onModifyCart={modifyQuantityHandler} cartQnt={props.quantity} />
     </li>
   );
 };
 
-export default MealItem;
+export default CartItem;

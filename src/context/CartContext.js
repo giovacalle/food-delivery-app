@@ -5,6 +5,7 @@ const CartContext = React.createContext({
     getTotalOrder: () => {},
     getQuantityProducts: () => {},
     addProduct: (product) => {},
+    setProduct: (product) => {},
     removeProduct: (product) => {},
     clearCart: () => {}
   });
